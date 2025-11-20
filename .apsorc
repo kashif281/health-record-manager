@@ -1,0 +1,123 @@
+{
+  "entities": [
+    {
+      "name": "Patient",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "name",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "dob",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "gender",
+          "type": "varchar",
+          "nullable": false
+        },
+        {
+          "name": "address",
+          "type": "text",
+          "nullable": true
+        },
+        {
+          "name": "phone_number",
+          "type": "varchar",
+          "nullable": true
+        },
+        {
+          "name": "email",
+          "type": "varchar",
+          "nullable": true
+        }
+      ],
+      "indexes": [],
+      "uniques": []
+    },
+    {
+      "name": "Appointment",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "time",
+          "type": "time",
+          "nullable": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "patient_id"
+          ],
+          "unique": false
+        }
+      ],
+      "uniques": []
+    },
+    {
+      "name": "Activity",
+      "created_at": false,
+      "updated_at": false,
+      "fields": [
+        {
+          "name": "patient_id",
+          "type": "bigint",
+          "nullable": false
+        },
+        {
+          "name": "date",
+          "type": "date",
+          "nullable": false
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "nullable": true
+        }
+      ],
+      "indexes": [
+        {
+          "fields": [
+            "patient_id"
+          ],
+          "unique": false
+        }
+      ],
+      "uniques": []
+    }
+  ],
+  "relationships": [
+    {
+      "from": "Patient",
+      "to": "Appointment",
+      "type": "OneToMany"
+    },
+    {
+      "from": "Patient",
+      "to": "Activity",
+      "type": "OneToMany"
+    }
+  ],
+  "_removedEntities": []
+}
